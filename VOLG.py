@@ -20,10 +20,10 @@ prod_files=[]
 test=0
 for week in range(5,10):
     week='0'*(2-len(str(week))) + str(week)
-    # list_of_files = glob.glob(r'\\lhrnetapp03cifs.enterprisenet.org\rfeprodapp05\InputBackupFiles\CH\Volg\Weekly-2019-WK-0{week}\*'.format(week=week)) # * means all if need specific format then *.csv
-    list_of_files = glob.glob(
-        r'C:\Users\olwo7001\Desktop\CH_data\Weekly-2019-WK-0{week}\*'.format(
-            week=week))  # * means all if need specific format then *.csv
+    list_of_files = glob.glob(r'\\lhrnetapp03cifs.enterprisenet.org\rfeprodapp05\InputBackupFiles\CH\Volg\Weekly-2019-WK-0{week}\*'.format(week=week)) # * means all if need specific format then *.csv
+    # list_of_files = glob.glob(
+    #     r'C:\Users\olwo7001\Desktop\CH_data\Weekly-2019-WK-0{week}\*'.format(
+    #         week=week))  # * means all if need specific format then *.csv
 
     latest_file = max(list_of_files, key=os.path.getctime)
     print(latest_file)
@@ -78,7 +78,7 @@ for week in range(5,10):
         # print(volg_data.loc['Total','value'])
         test=test+volg_data['value'].sum()
         print(test)
-        # result = volg_data.groupby(['data', 'shop']).aggregate({'value': np.sum, 'volume': np.sum})
+        result = volg_data.groupby(['data', 'shop']).aggregate({'value': np.sum, 'volume': np.sum})
         # print(r'C:\Users\olwo7001\Desktop\CH_data\cleaned_{nr}.txt'.format(nr=nr))
         # result.to_csv(r'C:\Users\olwo7001\Desktop\CH_data\cleaned_{nr}.txt'.format(nr=nr), encoding='ansi', header=None)
 

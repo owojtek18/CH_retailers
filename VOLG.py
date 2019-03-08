@@ -72,6 +72,7 @@ for week in range(5,10):
         print(time.time())
         # print()
         # volg_data = volg_data[((volg_data.volume > 0) & (volg_data.value > 0))]
+        volg_data.value = volg_data.apply(lambda x: -x['value'] if x['value'] >0 and  x['volume'] <0  else x['value'], axis=1)
         print(time.time())
         volg_data = volg_data[(volg_data['data'] >= '2019-02-01') & (volg_data['data'] <= '2019-02-28')]
         # volg_data.loc['Total'] = volg_data.sum()
